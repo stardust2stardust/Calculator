@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+}
+
+button {
+    width: 80px;
+    height: 80px;
+    box-sizing: border-box;
+}
+.container {
+    background-color: coral;
+    width: 500px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.row-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+}
+
+#display {
+    width: 400px;
+    background-color: antiquewhite;
+    height: 100px;
+    box-sizing: border-box;
+    text-align: right;
+    font-size: 30px;
+}
+
+#numpad {
+    background-color: lightgreen;
+    width: 400px;
+
+}
