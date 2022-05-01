@@ -1,14 +1,25 @@
+html {
+    min-height: 100%;
+    background-image: url(images/milad-fakurian-7eNPtK_LN9c-unsplash.jpg);
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 body {
-    background-color: black;
+    background-color: transparent;
 }
 
 button {
     width: 80px;
     height: 80px;
     box-sizing: border-box;
+    background-color: #480CA8;
+    color: #4CC9F0;
 }
-.container {
-    background-color: coral;
+.full-calc{
+    background-color: rgba(229, 218, 236, 0.7);
     width: 450px;
     margin-top: 80px;
     display: flex;
@@ -17,6 +28,7 @@ button {
     align-items: center;
     gap: 50px;
     padding: 20px 0px;
+    border-radius: 10px;
 }
 
 .row-1 {
@@ -44,7 +56,8 @@ button {
 
 #display {
     width: 400px;
-    background-color: antiquewhite;
+    background-color: #480CA8;
+    color: #4CC9F0;
     height: 80px;
     display: flex;
     flex-direction: column;
