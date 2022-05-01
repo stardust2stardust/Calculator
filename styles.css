@@ -17,7 +17,15 @@ button {
     box-sizing: border-box;
     background-color: #480CA8;
     color: #4CC9F0;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
 }
+
+button:active {
+    background-color: #5f36a1;
+}
+
 .full-calc{
     background-color: rgba(229, 218, 236, 0.7);
     width: 450px;
