@@ -3,11 +3,13 @@ const display = document.querySelector('#display');
 const operation = document.querySelectorAll('.operator');
 const equals = document.querySelector('#equals');
 
-let operator
+let operator = ''
 let displayValue
 let num1
 let num2
 let numbers = []
+let result
+
 
 function testPrint() {
     console.log('number button clicked')
@@ -37,7 +39,7 @@ function operate(num1, num2, operator) {
         return add(num1, num2);
     } else if (operator === "-") {
         return subtract(num1, num2);
-    } else if (operator === "*") {
+    } else if (operator === "x") {
         return multiply(num1, num2);
     } else if (operator === "/") {
         return divide(num1, num2);
@@ -46,7 +48,6 @@ function operate(num1, num2, operator) {
 
 // displays number clicked
 function displayNum(e) {
-    testPrint();
     console.log(e.target.value);
     display.innerText = e.target.value;
     displayValue = parseInt(e.target.value);
@@ -56,7 +57,6 @@ function displayNum(e) {
     } else {
         num2 = parseInt(e.target.value);
     }
-
 }
 
 function setOperator(e) {
@@ -65,6 +65,13 @@ function setOperator(e) {
     return operator
 }
 
+function showResult() {
+    const result = operate(num1, num2, operator);
+    display.innerText = result;
+    displayValue = result;
+    numbers = []
+}
+
 numBtn.forEach(el => el.addEventListener('click', displayNum))
 operation.forEach(el => el.addEventListener('click', setOperator))
-equals.addEventListener('click', operate);
+equals.addEventListener('click', showResult)
