@@ -2,6 +2,8 @@ const numBtn = document.querySelectorAll('.num-btn');
 const display = document.querySelector('#display');
 const operation = document.querySelectorAll('.operator');
 const equals = document.querySelector('#equals');
+const clear = document.querySelector('#clear')
+const defaultDisplay = "Let's Calculate!"
 
 let operator = ''
 let displayValue
@@ -49,24 +51,31 @@ function operate(num1, num2, operator) {
 // displays number clicked
 function displayNum(e) {
     console.log(e.target.value);
-    display.innerText = e.target.value;
-    displayValue = parseInt(e.target.value);
-    if (numbers.length === 0) {
-        num1 = parseInt(e.target.value);
-        numbers.push(num1);
+    if (display.innerText === defaultDisplay) {
+        display.innerText = e.target.value;
     } else {
-        num2 = parseInt(e.target.value);
-        numbers.push(num2);
+        if (numbers.length === 1) {
+            display.innerText = e.target.value;
+        } else {
+            display.innerText += e.target.value;
+        }
     }
+    console.log(numbers)
 }
 
 function setOperator(e) {
-    if (numbers.length === 2) {
-        showResult();
-    }
-    console.log(e.target.value)
     operator = e.target.value;
-    return operator
+    console.log(operator);
+    if (numbers.length === 0) {
+        num1 = parseInt(display.innerText);
+        numbers.push(num1);
+    } else if (numbers.length === 1) {
+        num2 = parseInt(display.innerText);
+        numbers.push(num2);
+
+    } else if (numbers.length === 2) {
+        showResult()
+    }
 }
 
 function currentResult() {
@@ -80,14 +89,11 @@ function showResult() {
     numbers = [result]
 }
 
+function clearDisplay() {
+    display.innerText = defaultDisplay;
+}
+
 numBtn.forEach(el => el.addEventListener('click', displayNum))
 operation.forEach(el => el.addEventListener('click', setOperator))
-// equals.addEventListener('click', showResult)
 
-// if length of numbers is 0:
-    // store num1
-    // store operator
-    // store num2
-// if length of numbers is 1:
-
-// if lenght of numbers is 2:
+clear.addEventListener('click', clearDisplay)
