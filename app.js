@@ -38,12 +38,13 @@ function operate(num1, num2, operator) {
 }
 
 
-function displayNum() {
+function displayNum(e) {
     testPrint();
-    console.log(numBtn.innerText)
-    console.log(display.innerText)
-    display.innerText = numBtn.innerText;
+    console.log(e.target.value);
+
 }
+
+
 
 
 numBtn.forEach(el => el.addEventListener('click', displayNum))
