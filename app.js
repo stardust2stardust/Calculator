@@ -1,6 +1,13 @@
-const numBtn = document.querySelectorAll('.num-btn')
+const numBtn = document.querySelectorAll('.num-btn');
 const display = document.querySelector('#display');
+const operation = document.querySelectorAll('.operator');
+const equals = document.querySelector('#equals');
 
+let operator
+let displayValue
+let num1
+let num2
+let numbers = []
 
 function testPrint() {
     console.log('number button clicked')
@@ -37,14 +44,27 @@ function operate(num1, num2, operator) {
     }
 }
 
-
+// displays number clicked
 function displayNum(e) {
     testPrint();
     console.log(e.target.value);
+    display.innerText = e.target.value;
+    displayValue = parseInt(e.target.value);
+    if (numbers.length === 0) {
+        num1 = parseInt(e.target.value);
+        numbers.push(num1);
+    } else {
+        num2 = parseInt(e.target.value);
+    }
 
 }
 
-
-
+function setOperator(e) {
+    console.log(e.target.value)
+    operator = e.target.value;
+    return operator
+}
 
 numBtn.forEach(el => el.addEventListener('click', displayNum))
+operation.forEach(el => el.addEventListener('click', setOperator))
+equals.addEventListener('click', operate);
