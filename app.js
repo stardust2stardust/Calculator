@@ -3,8 +3,8 @@ const display = document.querySelector('#display');
 const operation = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('#equals');
 const clear = document.querySelector('#clear')
+const decimal = document.querySelector('#decimal');
 const defaultDisplay = "Let's Calculate!"
-const fullCalc = document.querySelector('.full-calc')
 
 let operator = ''
 let displayValue
@@ -63,6 +63,7 @@ function operate(num1, num2, operator) {
 // displays number clicked
 function displayNum(e) {
     console.log(e.target.value);
+    console.log(e.target.innerText)
     if (display.innerText === defaultDisplay) {
         display.innerText = e.target.value;
     } else {
@@ -80,10 +81,10 @@ function setOperator(e) {
     console.log(numbers)
     if (numbers.length === 0) {
         operator = e.target.value;
-        num1 = parseInt(display.innerText);
+        num1 = parseFloat(display.innerText);
         numbers.push(num1)
     } else if (numbers.length === 1) {
-        num2 = parseInt(display.innerText);
+        num2 = parseFloat(display.innerText);
         showResult();
         operator = e.target.value;
     }
@@ -121,5 +122,6 @@ function clearDisplay() {
 
 numBtn.forEach(el => el.addEventListener('click', displayNum))
 operation.forEach(el => el.addEventListener('click', setOperator))
+decimal.addEventListener('click', displayNum)
 equalBtn.addEventListener('click', equals)
 clear.addEventListener('click', clearDisplay)
