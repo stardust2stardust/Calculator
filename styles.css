@@ -1,7 +1,4 @@
 html {
-    /* background: linear-gradient(135deg, #3f87a6,#4895EF,#4361EE,#480CA8, #B5179E); */
-    /* background: rgb(76, 201, 240);
-    background: linear-gradient(180deg, rgba(76,201,240,1) 0%, rgba(114,9,183,1) 100%); */
     background: #22223B;
     background: linear-gradient(180deg, rgba(34, 34, 59, 1) 50%, rgba(154, 140, 152, 1) 100% );
     background-repeat: no-repeat;
@@ -39,6 +36,7 @@ button:active {
     gap: 50px;
     padding: 20px 0px;
     border-radius: 10px;
+    box-shadow: 10px 5px 20px #22223B;
 }
 
 .row-1 {
