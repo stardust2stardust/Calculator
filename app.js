@@ -34,9 +34,20 @@ function divide(num1, num2) {
     if (num2 === 0) {
         return "Nooooooooo!!!!!!"
     }
-    return num1 / num2;
-}
+    else {
 
+        if (num1 % num2 === 0) {
+            return num1 / num2
+        }
+        else if ((num1 / num2).toString().length > 5) {
+            const quot = (num1 / num2).toFixed(6)
+            return parseFloat(quot);
+        }
+        else {
+            return num1 / num2
+        }
+    }
+}
 function operate(num1, num2, operator) {
     if (operator === "+") {
         return add(num1, num2);
