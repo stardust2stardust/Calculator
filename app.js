@@ -60,22 +60,29 @@ function displayNum(e) {
             display.innerText += e.target.value;
         }
     }
-    console.log(numbers)
+    // console.log(`num1: ${num1}`)
+    // console.log(`num2: ${num2}`)
+    // console.log(`numbers: ${numbers}`)
 }
 
 function setOperator(e) {
-    operator = e.target.value;
+
+    // operator = e.target.value;
+    // showResult()
     console.log(operator);
+    console.log(numbers)
     if (numbers.length === 0) {
+        operator = e.target.value;
         num1 = parseInt(display.innerText);
-        numbers.push(num1);
     } else if (numbers.length === 1) {
         num2 = parseInt(display.innerText);
-        numbers.push(num2);
-
-    } else if (numbers.length === 2) {
-        showResult()
+        showResult();
+        operator = e.target.value;
     }
+    // console.log(`num1: ${num1}`)
+    // console.log(`num2: ${num2}`)
+    // console.log(`numbers: ${numbers}`)
+    // console.log(operator)
 }
 
 function currentResult() {
@@ -87,6 +94,7 @@ function showResult() {
     display.innerText = result;
     displayValue = result;
     numbers = [result]
+    num1 = result;
 }
 
 function clearDisplay() {
