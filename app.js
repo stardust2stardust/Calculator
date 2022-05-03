@@ -107,8 +107,13 @@ function showResult() {
 }
 
 function equals() {
-    num2 = parseInt(display.innerText)
-    showResult();
+    if (numbers.length === 0) {
+        display.innerText = "0.0"
+    } else {
+        num2 = parseInt(display.innerText)
+        showResult();
+    }
+
 }
 
 function clearDisplay() {
