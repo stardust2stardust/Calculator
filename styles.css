@@ -1,8 +1,9 @@
 html {
     /* background: linear-gradient(135deg, #3f87a6,#4895EF,#4361EE,#480CA8, #B5179E); */
-    background: rgb(76,201,240);
-    background: linear-gradient(180deg, rgba(76,201,240,1) 0%, rgba(114,9,183,1) 100%);
-
+    /* background: rgb(76, 201, 240);
+    background: linear-gradient(180deg, rgba(76,201,240,1) 0%, rgba(114,9,183,1) 100%); */
+    background: #22223B;
+    background: linear-gradient(180deg, rgba(34, 34, 59, 1) 50%, rgba(154, 140, 152, 1) 100% );
     background-repeat: no-repeat;
     background-position: center center;
     min-height: 100%;
@@ -16,19 +17,19 @@ button {
     width: 80px;
     height: 80px;
     box-sizing: border-box;
-    background-color: #480CA8;
-    color: #4CC9F0;
+    background-color: #22223B;
+    color: #F2E9E4;
     border-radius: 10px;
     font-size: 20px;
     font-weight: 700;
 }
 
 button:active {
-    background-color: #5f36a1;
+    background-color: #6e728b;
 }
 
 .full-calc{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(242, 233, 228, 0.9);
     width: 450px;
     margin-top: 80px;
     display: flex;
@@ -63,10 +64,20 @@ button:active {
     
 }
 
+.num-btn {
+    background-color: #4A4E69;
+    color: #F2E9E4;
+}
+
+#clear, #backspace {
+    background-color: #9A8C98;
+    color: #22223B
+}
+
 #display {
     width: 400px;
-    background-color: #480CA8;
-    color: #4CC9F0;
+    background-color: #22223B;
+    color: #F2E9E4;
     height: 80px;
     display: flex;
     flex-direction: column;
@@ -77,6 +88,7 @@ button:active {
     font-size: 40px;
     padding: 10px;
     margin-top: 20px;
+    border-radius: 10px;
 }
 
 #numpad {
