@@ -4,7 +4,9 @@ const operation = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('#equals');
 const clear = document.querySelector('#clear')
 const decimal = document.querySelector('#decimal');
-const defaultDisplay = "Let's Calculate!"
+const backBtn = document.querySelector('#backspace');
+const defaultDisplay = "Let's Calculate!";
+
 
 let operator = ''
 let displayValue
@@ -17,11 +19,16 @@ let isNewNum = true
 
 
 function testPrint() {
-    console.log('number button clicked')
+    console.log(`num1: ${num1}`);
+    console.log(`num2: ${num2}`);
+    console.log(`operator: ${operator}`);
+    console.log(`numbers: ${numbers}`);
+    console.log('--------------');
 }
 
 function add(num1, num2) {
     return (num1 + num2);
+    testPrint();
 }
 
 function subtract(num1, num2) {
@@ -59,93 +66,97 @@ function operate(num1, num2, operator) {
     } else if (operator === "/") {
         return divide(num1, num2);
     }
+    testPrint();
 }
 
 // displays number clicked
 function displayNum(e) {
-    // console.log(e.target.value);
-    // console.log(e.target.innerText)
     if (display.innerText === defaultDisplay) {
         display.innerText = e.target.value;
     }
     if (isNewNum) {
         display.innerText = e.target.value;
         isNewNum = false;
+    } else if (display.innerText.includes(".") && e.target.value === ".") {
+        display.innerText = display.innerText;
     }
     else {
-
-        display.innerText += e.target.value
+        display.innerText += e.target.value;
     }
-
-    //  else {
-    //     if (numbers.length === 1) {
-    //         if (e.target.value === ".") {
-    //             display.innerText += e.target.value;
-    //         }
-    //         else {
-    //             display.innerText = e.target.value;
-    //         }
-    //     } else {
-    //         display.innerText += e.target.value;
-    //     }
-    // }
+    testPrint();
 }
 // updates num1, num2 and operator when operator button is clicked
 // will call showResult() if correct condition is met
 function setOperator(e) {
-    console.log(operator);
-    console.log(numbers)
     isNewNum = true
     if (numbers.length === 0) {
-        operator = e.target.value;
         num1 = parseFloat(display.innerText);
         numbers.push(num1)
     } else if (numbers.length === 1) {
         num2 = parseFloat(display.innerText);
+        numbers.push(num2)
+    } else if (numbers.length === 2) {
         showResult();
-        operator = e.target.value;
     }
-    console.log(`num1: ${num1}`)
-    console.log(`num2: ${num2}`)
-    console.log(`numbers: ${numbers}`)
-    console.log(`operator: ${operator}`)
+
+    if (numbers.length === 2) {
+        showResult();
+    }
+    operator = e.target.value;
+    testPrint();
 }
 
-function currentResult() {
-    console.log('in progress')
-}
 
 function showResult() {
-    const result = operate(num1, num2, operator);
+    let result = operate(num1, num2, operator);
     if (result.toString().length > 5) {
         result = (result).toFixed(6)
     }
     display.innerText = result;
-    displayValue = result;
-    numbers = [result]
     num1 = result;
+    numbers.pop(num2)
+    testPrint();
 }
 
 function equals() {
+    console.log('equals start')
+    testPrint();
     if (numbers.length === 0) {
         display.innerText = "0.0"
     } else {
-        num2 = parseInt(display.innerText)
+        num2 = parseFloat(display.innerText);
+        console.log(num2)
+        numbers.push(num2);
+        console.log('equals middle');
+        testPrint();
         showResult();
+        numbers.pop(num2)
     }
+    isNewNum = true;
+    console.log('equals end')
+    testPrint();
 }
 
 function clearDisplay() {
     display.innerText = defaultDisplay;
     isNewNum = true;
     numbers = [];
-    num1 = 0;
-    num2 = 0;
+    num1 = '';
+    num2 = '';
+    operator = '';
+    testPrint()
 }
 
+function backspace() {
+    const currentDisplay = display.innerText
+    const newDisplay = currentDisplay.slice(0, currentDisplay.length - 1);
+    display.innerText = newDisplay;
+    return newDisplay;
+}
 
-numBtn.forEach(el => el.addEventListener('click', displayNum))
-operation.forEach(el => el.addEventListener('click', setOperator))
-decimal.addEventListener('click', displayNum)
-equalBtn.addEventListener('click', equals)
-clear.addEventListener('click', clearDisplay)
+numBtn.forEach(el => el.addEventListener('click', displayNum));
+operation.forEach(el => el.addEventListener('click', setOperator));
+decimal.addEventListener('click', displayNum);
+equalBtn.addEventListener('click', equals);
+clear.addEventListener('click', clearDisplay);
+backBtn.addEventListener('click', backspace);
