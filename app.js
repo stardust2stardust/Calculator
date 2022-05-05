@@ -19,6 +19,7 @@ let isNewNum = true
 let btnValue = ''
 
 
+
 function testPrint() {
     console.log(`num1: ${num1}`);
     console.log(`num2: ${num2}`);
@@ -29,7 +30,6 @@ function testPrint() {
 
 function add(num1, num2) {
     return (num1 + num2);
-    testPrint();
 }
 
 function subtract(num1, num2) {
@@ -62,17 +62,15 @@ function operate(num1, num2, operator) {
         return add(num1, num2);
     } else if (operator === "-") {
         return subtract(num1, num2);
-    } else if (operator === "x") {
+    } else if (operator === "*") {
         return multiply(num1, num2);
     } else if (operator === "/") {
         return divide(num1, num2);
     }
-    testPrint();
 }
 
 // displays number clicked
 function displayNum(numButton) {
-
     if (display.innerText === defaultDisplay) {
         display.innerText = numButton;
     }
@@ -85,7 +83,6 @@ function displayNum(numButton) {
     else {
         display.innerText += numButton;
     }
-    testPrint();
 }
 // updates num1, num2 and operator when operator button is clicked
 // will call showResult() if correct condition is met
@@ -104,40 +101,30 @@ function setOperator() {
     if (numbers.length === 2) {
         showResult();
     }
-
     operator = clickedOpButton;
-    testPrint();
 }
 
 
 function showResult() {
-    let result = operate(num1, num2, operator);
+    result = operate(num1, num2, operator);
     if (result.toString().length > 5) {
         result = (result).toFixed(6)
     }
     display.innerText = result;
     num1 = result;
-    numbers.pop(num2)
-    testPrint();
+    numbers.pop(num2);
 }
 
 function equals() {
-    console.log('equals start')
-    testPrint();
     if (numbers.length === 0) {
         display.innerText = "0.0"
     } else {
         num2 = parseFloat(display.innerText);
-        console.log(num2)
         numbers.push(num2);
-        console.log('equals middle');
-        testPrint();
         showResult();
         numbers.pop(num2)
     }
     isNewNum = true;
-    console.log('equals end')
-    testPrint();
 }
 
 function clearDisplay() {
@@ -160,9 +147,7 @@ function backspace() {
 function keyPress(e) {
     possNumKeys = "0123456789."
     possOpKeys = "+-*/"
-
     currentKey = e.key
-    console.log(currentKey, typeof (currentKey));
     if (possNumKeys.includes(currentKey)) {
         numButton = currentKey;
         displayNum(numButton);
@@ -179,7 +164,6 @@ function keyPress(e) {
 
 function numClick(e) {
     numButton = e.target.value;
-    console.log(numButton)
     displayNum(numButton);
 }
 
@@ -194,5 +178,4 @@ decimal.addEventListener('click', numClick);
 equalBtn.addEventListener('click', equals);
 clear.addEventListener('click', clearDisplay);
 backBtn.addEventListener('click', backspace);
-
 document.addEventListener('keydown', keyPress)
