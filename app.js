@@ -16,6 +16,7 @@ let numbers = []
 let result
 let tempResult
 let isNewNum = true
+let btnValue = ''
 
 
 function testPrint() {
@@ -70,24 +71,25 @@ function operate(num1, num2, operator) {
 }
 
 // displays number clicked
-function displayNum(e) {
+function displayNum(numButton) {
+
     if (display.innerText === defaultDisplay) {
-        display.innerText = e.target.value;
+        display.innerText = numButton;
     }
     if (isNewNum) {
-        display.innerText = e.target.value;
+        display.innerText = numButton;
         isNewNum = false;
-    } else if (display.innerText.includes(".") && e.target.value === ".") {
+    } else if (display.innerText.includes(".") && numButton === ".") {
         display.innerText = display.innerText;
     }
     else {
-        display.innerText += e.target.value;
+        display.innerText += numButton;
     }
     testPrint();
 }
 // updates num1, num2 and operator when operator button is clicked
 // will call showResult() if correct condition is met
-function setOperator(e) {
+function setOperator() {
     isNewNum = true
     if (numbers.length === 0) {
         num1 = parseFloat(display.innerText);
@@ -102,7 +104,8 @@ function setOperator(e) {
     if (numbers.length === 2) {
         showResult();
     }
-    operator = e.target.value;
+
+    operator = clickedOpButton;
     testPrint();
 }
 
@@ -154,9 +157,42 @@ function backspace() {
     return newDisplay;
 }
 
-numBtn.forEach(el => el.addEventListener('click', displayNum));
-operation.forEach(el => el.addEventListener('click', setOperator));
-decimal.addEventListener('click', displayNum);
+function keyPress(e) {
+    possNumKeys = "0123456789."
+    possOpKeys = "+-*/"
+
+    currentKey = e.key
+    console.log(currentKey, typeof (currentKey));
+    if (possNumKeys.includes(currentKey)) {
+        numButton = currentKey;
+        displayNum(numButton);
+    } else if (possOpKeys.includes(currentKey)) {
+        clickedOpButton = currentKey;
+        setOperator();
+    } else if (currentKey === "=" || currentKey === "Enter") {
+        clickedEvalButton = currentKey;
+        equals();
+    } else if (currentKey === "Backspace") {
+        backspace();
+    }
+}
+
+function numClick(e) {
+    numButton = e.target.value;
+    console.log(numButton)
+    displayNum(numButton);
+}
+
+function opClick(e) {
+    clickedOpButton = e.target.value;
+    setOperator();
+}
+
+numBtn.forEach(el => el.addEventListener('click', numClick));
+operation.forEach(el => el.addEventListener('click', opClick));
+decimal.addEventListener('click', numClick);
 equalBtn.addEventListener('click', equals);
 clear.addEventListener('click', clearDisplay);
 backBtn.addEventListener('click', backspace);
+
+document.addEventListener('keydown', keyPress)
