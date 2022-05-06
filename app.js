@@ -17,6 +17,7 @@ let result
 let tempResult
 let isNewNum = true
 let btnValue = ''
+const zeroDiv = "Noooooooooo!!!!!"
 
 
 
@@ -42,7 +43,7 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if (num2 === 0) {
-        return "Nooooooooo!!!!!!"
+        return zeroDiv
     }
     else {
         if (num1 % num2 === 0) {
@@ -107,7 +108,10 @@ function setOperator() {
 
 function showResult() {
     result = operate(num1, num2, operator);
-    if (result.toString().length > 5) {
+    if (result === zeroDiv) {
+        display.innerText = result;
+    }
+    else if (result.toString().length > 5) {
         result = (result).toFixed(6)
     }
     display.innerText = result;
@@ -134,7 +138,6 @@ function clearDisplay() {
     num1 = '';
     num2 = '';
     operator = '';
-    testPrint()
 }
 
 function backspace() {
@@ -148,6 +151,7 @@ function keyPress(e) {
     possNumKeys = "0123456789."
     possOpKeys = "+-*/"
     currentKey = e.key
+
     if (possNumKeys.includes(currentKey)) {
         numButton = currentKey;
         displayNum(numButton);
@@ -164,6 +168,7 @@ function keyPress(e) {
 
 function numClick(e) {
     numButton = e.target.value;
+    console.log(e);
     displayNum(numButton);
 }
 
@@ -179,3 +184,4 @@ equalBtn.addEventListener('click', equals);
 clear.addEventListener('click', clearDisplay);
 backBtn.addEventListener('click', backspace);
 document.addEventListener('keydown', keyPress)
+
