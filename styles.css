@@ -19,12 +19,12 @@ button {
     color: #0A9396;
     border: 2px solid #0A9396;
     border-radius: 10px;
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 400;
 }
 
 button:active {
-
+    box-shadow: 0px 0px 20px #0A9396;
     width: 75px;
     height: 75px;
 }
@@ -46,10 +46,22 @@ button:active {
     font-size: 25px;
 }
 
+#clear:active,
+#backspace:active {
+    box-shadow: 0px 0px 20px #BB3E03;
+    width: 175px;
+    height: 75px;
+
+}
+
 .operator {
     border: 2px solid #EE9B00;
     color: #EE9B00;
-    font-size: 40px;
+    font-size: 35px;
+}
+
+.operator:active {
+    box-shadow: 0px 0px 20px #EE9B00;
 }
 
 /* .num-btn {
@@ -92,19 +104,12 @@ button:active {
     height: 80px;
 }
 
+
 .row-1>.button {
     width: 200px;
     height: 100px;
 }
 
-
-
-/* .pulse:hover, */
-.pulse:active {
-    animation: pulse 1s;
-    box-shadow: 0px 0px 20px transparent;
-    color: rgba(242, 233, 228, 0.9);
-}
 
 #display {
     width: 400px;
