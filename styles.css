@@ -8,6 +8,7 @@ html {
 
 body {
     background-color: transparent;
+    font-family: 'Roboto Mono', monospace;
 }
 
 button {
@@ -23,10 +24,39 @@ button {
 }
 
 button:active {
-    background-color: #6e728b;
-    width: 78px;
-    height: 78px;
+
+    width: 75px;
+    height: 75px;
 }
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+}
+
+#clear,
+#backspace {
+
+    color: #BB3E03;
+    border: 2px solid #BB3E03;
+    font-size: 25px;
+}
+
+.operator {
+    border: 2px solid #EE9B00;
+    color: #EE9B00;
+    font-size: 40px;
+}
+
+/* .num-btn {
+    background-color: #4A4E69;
+    color: #F2E9E4;
+} */
+
 
 .full-calc {
     background-color: #001219;
@@ -40,6 +70,7 @@ button:active {
     padding: 20px 0px;
     border-radius: 10px;
     box-shadow: 10px 5px 20px #001219;
+
 }
 
 .row-1 {
@@ -55,14 +86,6 @@ button:active {
     width: 400px;
 }
 
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    width: 100px;
-    height: 100px;
-}
 
 .top-row {
     width: 180px;
@@ -74,42 +97,18 @@ button:active {
     height: 100px;
 }
 
-.operator {
-    border: 2px solid #EE9B00;
-    color: #EE9B00;
-    font-size: 40px;
-}
+
 
 /* .pulse:hover, */
 .pulse:active {
     animation: pulse 1s;
-    box-shadow: 0px 0px 20px #1f1a18;
-    /* color: rgba(242, 233, 228, 0.9); */
-}
-
-/* @keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 var(--hover);
-    }
-} */
-
-
-/* .num-btn {
-    background-color: #4A4E69;
-    color: #F2E9E4;
-} */
-
-#clear,
-#backspace {
-
-    color: #BB3E03;
-    border: 2px solid #BB3E03;
-    font-size: 30px;
+    box-shadow: 0px 0px 20px transparent;
+    color: rgba(242, 233, 228, 0.9);
 }
 
 #display {
     width: 400px;
-    color: #94D2BD;
+    color: #EE9B00;
     background-color: #001219;
     height: 80px;
     display: flex;
@@ -118,7 +117,7 @@ button:active {
     justify-content: flex-end;
     box-sizing: border-box;
     text-align: right;
-    font-size: 40px;
+    font-size: 35px;
     padding: 10px;
     margin-top: 20px;
     border-radius: 10px;
