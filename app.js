@@ -179,18 +179,46 @@ function opClick(e) {
 
 
 function numStyleChange(e) {
-    console.log(e)
+
     numBtn.forEach(el => {
         if (el.value === e.key) {
-            console.log(`${el.value} equals ${e.key}`);
-            el.classList.add('numKeyPress')
-        }
-        else {
-            console.log(`the values are not equal`)
-
+            el.classList.add('numKeyPress');
+            document.addEventListener('keyup', () => {
+                el.classList.remove('numKeyPress')
+            });
 
         }
-    })
+    });
+    if (e.key === ".") {
+
+        decimal.classList.add('numKeyPress');
+        document.addEventListener('keyup', () => {
+            decimal.classList.remove('numKeyPress')
+        });
+    }
+
+    if (e.key === "=" || e.key === "Enter") {
+        equalBtn.classList.add('numKeyPress');
+        document.addEventListener('keyup', () => {
+            equalBtn.classList.remove('numKeyPress')
+        });
+    }
+
+    operation.forEach(el => {
+        if (el.value === e.key) {
+            el.classList.add('opKeyPress')
+        }
+        document.addEventListener('keyup', () => {
+            el.classList.remove('opKeyPress')
+        });
+    });
+
+    if (e.key === "Backspace") {
+        backBtn.classList.add('numKeyPress');
+        document.addEventListener('keyup', () => {
+            backBtn.classList.remove('numKeyPress')
+        });
+    }
 }
 
 
@@ -202,3 +230,4 @@ clear.addEventListener('click', clearDisplay);
 backBtn.addEventListener('click', backspace);
 document.addEventListener('keydown', keyPress)
 document.addEventListener('keydown', numStyleChange)
+
