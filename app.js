@@ -177,6 +177,23 @@ function opClick(e) {
     setOperator();
 }
 
+
+function numStyleChange(e) {
+    console.log(e)
+    numBtn.forEach(el => {
+        if (el.value === e.key) {
+            console.log(`${el.value} equals ${e.key}`);
+            el.classList.add('numKeyPress')
+        }
+        else {
+            console.log(`the values are not equal`)
+
+
+        }
+    })
+}
+
+
 numBtn.forEach(el => el.addEventListener('click', numClick));
 operation.forEach(el => el.addEventListener('click', opClick));
 decimal.addEventListener('click', numClick);
@@ -184,4 +201,4 @@ equalBtn.addEventListener('click', equals);
 clear.addEventListener('click', clearDisplay);
 backBtn.addEventListener('click', backspace);
 document.addEventListener('keydown', keyPress)
-
+document.addEventListener('keydown', numStyleChange)
