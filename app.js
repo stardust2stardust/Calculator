@@ -5,8 +5,9 @@ const equalBtn = document.querySelector('#equals');
 const clear = document.querySelector('#clear')
 const decimal = document.querySelector('#decimal');
 const backBtn = document.querySelector('#backspace');
-const defaultDisplay = "Let's Calculate!";
 
+const defaultDisplay = "Let's Calculate!";
+const zeroDiv = "Noooooooooo!!!!!"
 
 let operator = ''
 let displayValue
@@ -17,17 +18,7 @@ let result
 let tempResult
 let isNewNum = true
 let btnValue = ''
-const zeroDiv = "Noooooooooo!!!!!"
 
-
-
-function testPrint() {
-    console.log(`num1: ${num1}`);
-    console.log(`num2: ${num2}`);
-    console.log(`operator: ${operator}`);
-    console.log(`numbers: ${numbers}`);
-    console.log('--------------');
-}
 
 function add(num1, num2) {
     return (num1 + num2);
@@ -70,7 +61,7 @@ function operate(num1, num2, operator) {
     }
 }
 
-// displays number clicked
+
 function displayNum(numButton) {
     if (display.innerText === defaultDisplay) {
         display.innerText = numButton;
@@ -85,6 +76,7 @@ function displayNum(numButton) {
         display.innerText += numButton;
     }
 }
+
 // updates num1, num2 and operator when operator button is clicked
 // will call showResult() if correct condition is met
 function setOperator() {
@@ -119,6 +111,7 @@ function showResult() {
     numbers.pop(num2);
 }
 
+
 function equals() {
     if (numbers.length === 0) {
         display.innerText = "0.0"
@@ -131,6 +124,7 @@ function equals() {
     isNewNum = true;
 }
 
+
 function clearDisplay() {
     display.innerText = defaultDisplay;
     isNewNum = true;
@@ -140,12 +134,14 @@ function clearDisplay() {
     operator = '';
 }
 
+
 function backspace() {
     const currentDisplay = display.innerText
     const newDisplay = currentDisplay.slice(0, currentDisplay.length - 1);
     display.innerText = newDisplay;
     return newDisplay;
 }
+
 
 function keyPress(e) {
     possNumKeys = "0123456789."
@@ -166,11 +162,12 @@ function keyPress(e) {
     }
 }
 
+
 function numClick(e) {
     numButton = e.target.value;
-    console.log(e);
     displayNum(numButton);
 }
+
 
 function opClick(e) {
     clickedOpButton = e.target.value;
@@ -186,9 +183,9 @@ function numStyleChange(e) {
             document.addEventListener('keyup', () => {
                 el.classList.remove('numKeyPress')
             });
-
         }
     });
+
     if (e.key === ".") {
 
         decimal.classList.add('numKeyPress');
