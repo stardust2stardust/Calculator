@@ -52,7 +52,6 @@ button:active,
     box-shadow: 0px 0px 20px #BB3E03;
     width: 175px;
     height: 75px;
-
 }
 
 .operator {
@@ -66,12 +65,6 @@ button:active,
     box-shadow: 0px 0px 20px #EE9B00;
 }
 
-/* .num-btn {
-    background-color: #4A4E69;
-    color: #F2E9E4;
-} */
-
-
 .full-calc {
     background-color: #001219;
     width: 450px;
@@ -84,7 +77,6 @@ button:active,
     padding: 20px 0px;
     border-radius: 10px;
     box-shadow: 10px 5px 20px #001219;
-
 }
 
 .row-1 {
